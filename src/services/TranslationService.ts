@@ -28,6 +28,11 @@ export class TranslationService {
     return TranslationService.instance;
   }
 
-  translate = (id: string, values?: Record<string, RenderType>): string =>
-    this.intl.formatMessage({ id }, { ...values }) as string;
+  translate = (id: string, values?: Record<string, RenderType>): string => {
+    if (!TranslationService.instance) {
+      throw new Error('Missing TranslationService instance');
+    }
+
+    return this.intl.formatMessage({ id }, { ...values }) as string;
+  };
 }
