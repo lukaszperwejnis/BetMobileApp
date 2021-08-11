@@ -21,9 +21,15 @@
     "lib": ["dom", "esnext"],
     "baseUrl": "./src",
     "paths": {
+      "@assets/*": ["assets/*"],
       "@components": ["components/index.ts"],
+      "@constants": ["constants/index.ts"],
+      "@pages": ["pages/index.ts"],
+      "@services": ["services/index.ts"],
+      "@structures": ["structures/index.ts"],
+      "@utils": ["utils/index.ts"],
     }
   },
-  "files": ["src/App.tsx"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }

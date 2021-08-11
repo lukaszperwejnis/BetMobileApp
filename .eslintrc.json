@@ -42,7 +42,13 @@
     "import/resolver": {
       "alias": {
         "map": [
-          ["@components", "./src/components/index.ts"]
+          ["@assets", "./src/assets"],
+          ["@components", "./src/components/index.ts"],
+          ["@constants", "./src/constants/index.ts"],
+          ["@pages", "./src/pages/index.ts"],
+          ["@services", "./src/services/index.ts"],
+          ["@structures", "./src/structures/index.ts"],
+          ["@utils", "./src/utils/index.ts"]
         ],
         "extensions": [".ts", ".tsx", ".json", ".js"]
       }

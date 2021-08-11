@@ -1,1 +1,1 @@
-export { Makarena } from './Makarena';
+export { AppWrapper } from './AppWrapper';
