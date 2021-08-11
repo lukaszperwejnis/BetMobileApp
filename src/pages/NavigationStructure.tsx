@@ -5,11 +5,13 @@ import { Navigation } from '@constants';
 import { Login } from './Login/Login';
 import { ResetPassword } from './ResetPassword/ResetPassword';
 import { SetNewPassword } from './SetNewPassword/SetNewPassword';
+import { Signup } from './Signup';
 
 export type RootStackParamList = {
+  [Navigation.Signup]: { token: string; email: string };
   [Navigation.Login]: undefined;
   [Navigation.ResetPassword]: undefined;
-  [Navigation.SetNewPassword]: { email: string; token: string };
+  [Navigation.SetNewPassword]: { token: string };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -22,6 +24,7 @@ export const NavigationStructure = (): JSX.Element => {
         header: () => <Text>Siema Ryju</Text>,
         headerStyle: { height: 60 },
       }}>
+      <Stack.Screen name={Navigation.Signup} component={Signup} />
       <Stack.Screen name={Navigation.Login} component={Login} />
       <Stack.Screen name={Navigation.ResetPassword} component={ResetPassword} />
       <Stack.Screen
