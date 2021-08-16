@@ -7,14 +7,14 @@ import {
   Signup,
   User,
 } from '@structures';
-import { redirect, mapErrorToMessage } from '@utils';
-import { AppUrls } from '@config';
+import { mapErrorToMessage } from '@utils';
 import {
   authService,
   tokenService,
   TranslationService,
   userService,
 } from '@services';
+import { navigate, RouteName } from '@navigation';
 import {
   successLogin,
   failedLogin,
@@ -43,7 +43,7 @@ function* login(action: SagaParameter<LoginAction>) {
     AuthProvider.getInstance().notify();
 
     yield put(successLogin<User.DTO>(user));
-    yield call(redirect as any, AppUrls.DASHBOARD.pattern);
+    yield call(navigate as any, RouteName.Dashboard);
   } catch (error) {
     const errorMessage = mapErrorToMessage(error);
     yield put(failedLogin(errorMessage));
@@ -57,7 +57,7 @@ function* signup(action: SagaParameter<SignupAction>) {
     yield call(authService.signup, action.payload);
     yield call(messageActions.success, translate('signup.success'));
     yield put(successSignup());
-    yield call(redirect as any, AppUrls.LOGIN.pattern);
+    yield call(navigate as any, RouteName.Login);
   } catch (error) {
     if (tokenService.isInvalidTokenError(error.response.data)) {
       yield put(invalidTokenSignup());

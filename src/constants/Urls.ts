@@ -1,7 +1,7 @@
-import { CONFIG } from './config';
+import Config from 'react-native-config';
 
 function getUrl(url: string): string {
-  return CONFIG.API_URL + url;
+  return Config.API_URL + url;
 }
 
 export const URLS = {

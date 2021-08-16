@@ -24,6 +24,7 @@
       "@assets/*": ["assets/*"],
       "@components": ["components/index.ts"],
       "@constants": ["constants/index.ts"],
+      "@navigation": ["navigation/index.ts"],
       "@pages": ["pages/index.ts"],
       "@services": ["services/index.ts"],
       "@stores": ["stores/*"],

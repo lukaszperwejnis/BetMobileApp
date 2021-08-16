@@ -10,6 +10,7 @@ module.exports = {
           '@assets': './src/assets',
           '@components': './src/components/index.ts',
           '@constants': './src/constants/index.ts',
+          '@navigation': './src/navigation/index.ts',
           '@pages': './src/pages/index.ts',
           '@services': './src/services/index.ts',
           '@stores': './src/stores',
