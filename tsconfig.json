@@ -26,6 +26,7 @@
       "@constants": ["constants/index.ts"],
       "@pages": ["pages/index.ts"],
       "@services": ["services/index.ts"],
+      "@stores": ["stores/*"],
       "@structures": ["structures/index.ts"],
       "@utils": ["utils/index.ts"],
     }

@@ -15,16 +15,11 @@ export class TranslationService {
       },
       createIntlCache(),
     );
+
+    TranslationService.instance = this;
   }
 
-  getInstance(
-    locale: Locales,
-    messages: Record<string, string>,
-  ): TranslationService {
-    if (!TranslationService.instance) {
-      TranslationService.instance = new TranslationService(locale, messages);
-    }
-
+  static getInstance(): TranslationService {
     return TranslationService.instance;
   }
 
