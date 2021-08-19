@@ -7,6 +7,7 @@ export const linking: LinkingOptions<RootStackParamList> = {
   config: {
     screens: {
       [RouteName.Signup]: 'signup/:token/:email',
+      [RouteName.ResetPassword]: 'reset-password/:token',
     },
   },
 };

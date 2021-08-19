@@ -1,8 +1,8 @@
 export enum RouteName {
   Signup = 'Signup',
   Login = 'Login',
+  StartResetPassword = 'StartResetPassword',
   ResetPassword = 'ResetPassword',
-  SetNewPassword = 'SetNewPassword',
   MailInvitationSignup = 'MailInvitationSignup',
   InvalidSignupToken = 'InvalidSignupToken',
   Dashboard = 'Dashboard',

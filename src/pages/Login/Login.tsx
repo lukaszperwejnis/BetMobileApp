@@ -1,18 +1,16 @@
 import React from 'react';
-import { Button, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { useTranslation } from '@hooks';
-import { CustomPage } from '@components';
+import { CustomPage, FormField, Submit } from '@components';
 import { StoreType } from '@stores/index';
 import { login } from '@stores/actions';
-import { RouteName } from '@navigation';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { TextInputFormField } from '../../components/FormField/TextInputFormField';
-import { emailSchema, getRequiredStringSchema } from '../../schemas';
+import { RouteName, RootStackParamList } from '@navigation';
+import { emailSchema, getRequiredStringSchema } from '@field-schemas';
 import { PasswordRestLink, StyledError } from './styles';
-import { RootStackParamList } from '../../navigation/NavigationStructure';
 
 type FormValues = {
   email: string;
@@ -42,7 +40,7 @@ export const Login = ({ navigation }: LoginProps): JSX.Element => {
   };
 
   const onGoToResetPassword = () =>
-    navigation.navigate(RouteName.ResetPassword);
+    navigation.navigate(RouteName.StartResetPassword);
 
   return (
     <CustomPage title={translate('login.header')} isLoading={isLoading}>
@@ -52,16 +50,17 @@ export const Login = ({ navigation }: LoginProps): JSX.Element => {
         onSubmit={onSubmit}>
         {({ handleSubmit }) => (
           <TouchableOpacity>
-            <TextInputFormField
+            <FormField.TextInputFormField
               name="email"
               placeholder={translate('fields.email')}
             />
-            <TextInputFormField
+            <FormField.TextInputFormField
               name="password"
               placeholder={translate('fields.password')}
+              secureTextEntry
             />
             <>{Boolean(error) && <StyledError>{error}</StyledError>}</>
-            <Button
+            <Submit
               disabled={isLoading}
               onPress={handleSubmit as any}
               title={translate('login.submit')}

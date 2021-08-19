@@ -29,13 +29,19 @@ export const TextInputFormField = ({
   const error = errorMessage || meta.error;
   return (
     <Wrapper style={wrapperStyles}>
-      <>{label && <Label style={labelStyles}>{label}</Label>}</>
+      <>
+        {label && (
+          <Label withSpacingTop={withSpacingTop} style={labelStyles}>
+            {label}
+          </Label>
+        )}
+      </>
       <StyledTextInput
         value={field.value}
         onChangeText={field.onChange(name)}
         onBlur={field.onBlur(name)}
         isInvalid={hasError}
-        withSpacingTop={withSpacingTop}
+        withSpacingTop={label ? false : withSpacingTop}
         autoCapitalize="none"
         {...props}
       />

@@ -9,7 +9,7 @@ export const FormComponents = {
 };
 
 type FormFieldType = {
-  TextInputFormField: unknown;
+  TextInputFormField: any;
 };
 
 export const FormField: FormFieldType = {

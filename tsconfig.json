@@ -27,6 +27,7 @@
       "@hooks": ["hooks/index.ts"],
       "@navigation": ["navigation/index.ts"],
       "@pages": ["pages/index.ts"],
+      "@field-schemas": ["field-schemas/index.ts"],
       "@services": ["services/index.ts"],
       "@stores/*": ["stores/*"],
       "@structures": ["structures/index.ts"],

@@ -6,6 +6,7 @@ import { resetPassword } from './resetPassword';
 import { setPassword } from './setPassword';
 import { invalidToken } from './invalidToken';
 import { errors } from './errors';
+import { pages } from './pages';
 
 export const pl = {
   ...fields,
@@ -16,4 +17,5 @@ export const pl = {
   ...setPassword,
   ...invalidToken,
   ...errors,
+  ...pages,
 };

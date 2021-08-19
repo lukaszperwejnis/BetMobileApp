@@ -1,5 +1,5 @@
 export { Login } from './Login/Login';
-export { SetNewPassword } from './SetNewPassword/SetNewPassword';
 export { ResetPassword } from './ResetPassword/ResetPassword';
+export { StartResetPassword } from './StartResetPassword/StartResetPassword';
 export { Signup } from './Signup';
 export { Dashboard } from './Dashboard/Dashboard';
