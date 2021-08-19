@@ -1,9 +1,9 @@
 import { StorageKeys, URLS } from '@constants';
 import { User } from '@structures';
 import { tokenService } from './token.service';
-import { localStorageService } from './localStorage.service';
 import { ApiService } from './ApiService/ApiService';
 import { AuthProvider } from '../providers/AuthProvider';
+import { asyncStorageService } from './asyncStorage.service';
 
 // TODO move to structures
 type ValidateInvitationTokenResult = {
@@ -18,11 +18,11 @@ type ValidateInvitationTokenResult = {
 
 class AppService extends ApiService {
   setUser = (user: User.DTO) => {
-    localStorageService.set(StorageKeys.User, user);
+    asyncStorageService.set(StorageKeys.User, user);
   };
 
-  getUser = (): User.DTO | null =>
-    localStorageService.get<User.DTO>(StorageKeys.User);
+  getUser = (): Promise<User.DTO | null> =>
+    asyncStorageService.get<User.DTO>(StorageKeys.User);
 
   validateInvitationToken = (
     token: string,
@@ -33,7 +33,7 @@ class AppService extends ApiService {
 
   logout = () => {
     tokenService.clearTokens();
-    localStorageService.remove(StorageKeys.User);
+    asyncStorageService.remove(StorageKeys.User);
     AuthProvider.getInstance().notify();
   };
 
@@ -42,7 +42,10 @@ class AppService extends ApiService {
       StorageKeys.AccessToken,
       StorageKeys.RefreshToken,
       StorageKeys.User,
-    ].every((storageKey) => Boolean(localStorageService.get(storageKey)));
+    ].every(async (storageKey) => {
+      const value = await asyncStorageService.get(storageKey);
+      return Boolean(value);
+    });
   };
 }
 

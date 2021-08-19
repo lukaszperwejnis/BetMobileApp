@@ -1,6 +1,6 @@
 export namespace Message {
   export type Message = {
-    key: number;
+    key: string;
     text: string;
     duration: number;
     type: Type;

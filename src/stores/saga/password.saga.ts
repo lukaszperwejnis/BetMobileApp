@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { all, call, fork, takeLatest, put } from '@redux-saga/core/effects';
 import { Password, SagaParameter } from '@structures';
-import { mapErrorToMessage } from '@utils';
-import { passwordService, tokenService, TranslationService } from '@services';
+import { mapErrorToMessage, translate } from '@utils';
+import { passwordService, tokenService } from '@services';
 import { navigate, RouteName } from '@navigation';
 import { PasswordActionType } from '../types';
 import { messageActions } from '../actions/message.actions';
@@ -30,7 +30,6 @@ function* startReset(action: SagaParameter<StartResetAction>): unknown {
 
 function* reset(action: SagaParameter<ResetAction>): unknown {
   try {
-    const { translate } = TranslationService.getInstance();
     yield call(passwordService.reset, action.payload);
     yield put(successReset());
     yield call(messageActions.success, translate('resetPassword.success'));

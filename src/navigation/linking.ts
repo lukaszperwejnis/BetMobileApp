@@ -6,7 +6,7 @@ export const linking: LinkingOptions<RootStackParamList> = {
   prefixes: ['betmobileapp://'],
   config: {
     screens: {
-      [RouteName.Signup]: 'signup/:token/:email',§
+      [RouteName.Signup]: 'signup/:token/:email',
     },
   },
 };

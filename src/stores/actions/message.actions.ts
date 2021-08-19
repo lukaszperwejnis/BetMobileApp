@@ -8,7 +8,7 @@ interface Action<T> {
 }
 
 type UnmountMessagePayload = {
-  key: number;
+  key: string;
 };
 
 export const mountMessage = (
@@ -32,7 +32,7 @@ export type MessageActions =
   | ReturnType<typeof unmountMessage>;
 
 function message(type: Message.Type, text: string, duration = 3) {
-  const key = new Date().getTime();
+  const key = new Date().getTime().toString(10);
   rootStore.dispatch(
     mountMessage({
       key,

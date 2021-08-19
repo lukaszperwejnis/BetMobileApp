@@ -7,13 +7,8 @@ import {
   Signup,
   User,
 } from '@structures';
-import { mapErrorToMessage } from '@utils';
-import {
-  authService,
-  tokenService,
-  TranslationService,
-  userService,
-} from '@services';
+import { mapErrorToMessage, translate } from '@utils';
+import { authService, tokenService, userService } from '@services';
 import { navigate, RouteName } from '@navigation';
 import {
   successLogin,
@@ -45,6 +40,7 @@ function* login(action: SagaParameter<LoginAction>) {
     yield put(successLogin<User.DTO>(user));
     yield call(navigate as any, RouteName.Dashboard);
   } catch (error) {
+    console.error(error);
     const errorMessage = mapErrorToMessage(error);
     yield put(failedLogin(errorMessage));
     yield call(messageActions.error, errorMessage);
@@ -53,7 +49,6 @@ function* login(action: SagaParameter<LoginAction>) {
 
 function* signup(action: SagaParameter<SignupAction>) {
   try {
-    const { translate } = TranslationService.getInstance();
     yield call(authService.signup, action.payload);
     yield call(messageActions.success, translate('signup.success'));
     yield put(successSignup());

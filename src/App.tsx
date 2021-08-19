@@ -1,25 +1,23 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { RawIntlProvider } from 'react-intl';
 import { NavigationContainer } from '@react-navigation/native';
-import { Locales } from '@constants';
-import * as messages from '@assets/i18n';
-import { TranslationService } from '@services';
-import { AppWrapper } from '@components';
+import { rootStore } from '@stores/index';
+import { AppWrapper, MessageTracker } from '@components';
 import { navigationRef, NavigationStructure, linking } from '@navigation';
+import { intl } from '@utils';
 
 const App = (): JSX.Element => {
-  const translationService = new TranslationService(
-    Locales.Pl,
-    // eslint-disable-next-line import/namespace
-    messages[Locales.Pl] as any,
-  );
   return (
     <NavigationContainer ref={navigationRef} linking={linking}>
-      <RawIntlProvider value={translationService.intl}>
-        <AppWrapper>
-          <NavigationStructure />
-        </AppWrapper>
-      </RawIntlProvider>
+      <Provider store={rootStore}>
+        <RawIntlProvider value={intl}>
+          <AppWrapper>
+            <NavigationStructure />
+            <MessageTracker />
+          </AppWrapper>
+        </RawIntlProvider>
+      </Provider>
     </NavigationContainer>
   );
 };

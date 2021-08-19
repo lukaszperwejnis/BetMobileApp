@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { ErrorCodes, SchemaValidationError } from '@structures';
-import { TranslationService } from '@services';
+import { translate } from './intl';
 
 const availableFieldsTranslations = [
   'email',
@@ -11,7 +11,6 @@ const availableFieldsTranslations = [
 ];
 
 const mappedFieldsFromError = (errors: SchemaValidationError[]) => {
-  const { translate } = TranslationService.getInstance();
   const mappedErrors = errors.map(({ field }) => {
     if (availableFieldsTranslations.includes(field)) {
       return translate(`fields.${field}`);
@@ -24,8 +23,6 @@ const mappedFieldsFromError = (errors: SchemaValidationError[]) => {
 };
 
 export const mapErrorToMessage = (error: AxiosError): string => {
-  const { translate } = TranslationService.getInstance();
-
   if (!error.response) {
     return translate('error.unknown');
   }

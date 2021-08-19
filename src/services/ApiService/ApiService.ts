@@ -1,12 +1,12 @@
 import axios, { AxiosInstance } from 'axios';
+import Config from 'react-native-config';
 import {
   getMappedRequestOptions,
   RequestConfigType,
   RequestOptionsType,
 } from './helpers';
-import { CONFIG } from '../../config';
 
-const baseURL = CONFIG.API_URL;
+const baseURL = Config.API_URL;
 
 export abstract class ApiService {
   private request: AxiosInstance;

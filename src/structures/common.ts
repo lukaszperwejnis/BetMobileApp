@@ -1,3 +1,5 @@
+import { StyleProp, ViewStyle } from 'react-native';
+
 export interface WithChildrenProps {
   children: RenderType;
 }
@@ -25,3 +27,5 @@ export interface WithLoading {
 export interface WithTokenValidation {
   hasInvalidToken: boolean;
 }
+
+export type Styles = StyleProp<ViewStyle>;

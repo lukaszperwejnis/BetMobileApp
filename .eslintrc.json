@@ -45,11 +45,13 @@
           ["@assets", "./src/assets"],
           ["@components", "./src/components/index.ts"],
           ["@constants", "./src/constants/index.ts"],
+          ["@hooks", "./src/hooks/index.ts"],
           ["@navigation", "./src/navigation/index.ts"],
           ["@pages", "./src/pages/index.ts"],
           ["@services", "./src/services/index.ts"],
           ["@stores", "./src/stores"],
           ["@structures", "./src/structures/index.ts"],
+          ["@styles", "./src/styles/index.ts"],
           ["@utils", "./src/utils/index.ts"]
         ],
         "extensions": [".ts", ".tsx", ".json", ".js"]
@@ -82,6 +84,8 @@
       }
     ],
     "react/prop-types": "off",
-    "@typescript-eslint/no-namespace": "off"
+    "@typescript-eslint/no-namespace": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

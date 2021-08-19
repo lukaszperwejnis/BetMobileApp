@@ -8,6 +8,7 @@ export type {
   WithError,
   WithLoading,
   WithTokenValidation,
+  Styles,
 } from './common';
 export type { ApiError } from './ApiError';
 export type { User } from './User';
