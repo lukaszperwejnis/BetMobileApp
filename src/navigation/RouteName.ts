@@ -5,5 +5,8 @@ export enum RouteName {
   ResetPassword = 'ResetPassword',
   MailInvitationSignup = 'MailInvitationSignup',
   InvalidSignupToken = 'InvalidSignupToken',
-  Dashboard = 'Dashboard',
+  Main = 'Main',
+  AvailableBets = 'AvailableBets',
+  ActiveBets = 'ActiveBets',
+  FinishedBets = 'FinishedBets',
 }

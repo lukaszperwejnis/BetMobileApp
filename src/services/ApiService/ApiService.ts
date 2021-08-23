@@ -15,11 +15,11 @@ export abstract class ApiService {
     this.request = axios.create({ baseURL });
   }
 
-  get<T>(url: string, config?: RequestOptionsType): Promise<T> {
+  async get<T>(url: string, config?: RequestOptionsType): Promise<T> {
     if (!config) {
       return this.request.get(url);
     }
-    return this.request.get(url, getMappedRequestOptions(config));
+    return this.request.get(url, await getMappedRequestOptions(config));
   }
 
   async post<T>(url: string, config?: RequestConfigType): Promise<T> {
@@ -31,27 +31,35 @@ export abstract class ApiService {
     return this.request.post(url, payload, result);
   }
 
-  put<T>(url: string, config?: RequestConfigType): Promise<T> {
+  async put<T>(url: string, config?: RequestConfigType): Promise<T> {
     if (!config) {
       return this.request.put(url);
     }
     const { payload, ...options } = config;
-    return this.request.put(url, payload, getMappedRequestOptions(options));
+    return this.request.put(
+      url,
+      payload,
+      await getMappedRequestOptions(options),
+    );
   }
 
-  patch<T>(url: string, config?: RequestConfigType): Promise<T> {
+  async patch<T>(url: string, config?: RequestConfigType): Promise<T> {
     if (!config) {
       return this.request.patch(url);
     }
     const { payload, ...options } = config;
-    return this.request.patch(url, payload, getMappedRequestOptions(options));
+    return this.request.patch(
+      url,
+      payload,
+      await getMappedRequestOptions(options),
+    );
   }
 
-  delete<T>(url: string, config?: RequestConfigType): Promise<T> {
+  async delete<T>(url: string, config?: RequestConfigType): Promise<T> {
     if (!config) {
       return this.request.delete(url);
     }
     const { payload, ...options } = config;
-    return this.request.delete(url, getMappedRequestOptions(options));
+    return this.request.delete(url, await getMappedRequestOptions(options));
   }
 }

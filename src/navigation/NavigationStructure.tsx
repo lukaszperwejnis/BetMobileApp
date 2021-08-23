@@ -1,21 +1,16 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import {
-  Dashboard,
-  Login,
-  StartResetPassword,
-  ResetPassword,
-  Signup,
-} from '@pages';
+import { Login, StartResetPassword, ResetPassword, Signup } from '@pages';
 import { useTranslation } from '@hooks';
 import { RouteName } from './RouteName';
+import { BottomTabs } from './BottomTabs';
 
 export type RootStackParamList = {
   [RouteName.Signup]: { token: string; email: string };
   [RouteName.Login]: undefined;
   [RouteName.StartResetPassword]: undefined;
   [RouteName.ResetPassword]: { token: string };
-  [RouteName.Dashboard]: undefined;
+  [RouteName.Main]: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -48,10 +43,11 @@ export const NavigationStructure = (): JSX.Element => {
         }}
       />
       <Stack.Screen
-        name={RouteName.Dashboard}
-        component={Dashboard}
+        name={RouteName.Main}
+        component={BottomTabs}
         options={{
           headerLeft: () => null,
+          headerShown: false,
         }}
       />
     </Stack.Navigator>

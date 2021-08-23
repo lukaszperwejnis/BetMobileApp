@@ -38,7 +38,7 @@ function* login(action: SagaParameter<LoginAction>) {
     AuthProvider.getInstance().notify();
 
     yield put(successLogin<User.DTO>(user));
-    yield call(navigate as any, RouteName.Dashboard);
+    yield call(navigate as any, RouteName.Main);
   } catch (error) {
     console.error(error);
     const errorMessage = mapErrorToMessage(error);

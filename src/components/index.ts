@@ -6,3 +6,5 @@ export { MessageTracker } from './MessageTracker';
 export { CustomPage } from './CustomPage/CustomPage';
 export { StyledTextInput } from './StyledTextInput';
 export { Submit } from './Submit';
+export { GameBetInput } from './GameBetInput/GameBetInput';
+export { StyledModalSelector } from './StyledModalSelector';
