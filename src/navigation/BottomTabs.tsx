@@ -17,7 +17,7 @@ export const BottomTabs = (): JSX.Element => {
           title: translate('pages.availableBets'),
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
-              name="clipboard-list-outline"
+              name="soccer-field"
               color={color}
               size={26}
             />
@@ -27,7 +27,16 @@ export const BottomTabs = (): JSX.Element => {
       />
       <Tab.Screen
         name={RouteName.ActiveBets}
-        options={{ title: translate('pages.activeBets') }}
+        options={{
+          title: translate('pages.activeBets'),
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="progress-clock"
+              color={color}
+              size={26}
+            />
+          ),
+        }}
         component={ActiveBets}
       />
       {/* <Tab.Screen           name={RouteName.FinishedBets}     options={{ title: translate('pages.finishedBets') }} component={SettingsScreen} /> */}

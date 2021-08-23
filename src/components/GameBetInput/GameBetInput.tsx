@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import { GameBet as GameBetType } from '@structures';
 import { useTranslation } from '@hooks';
+import { crests } from '@assets/crests';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { normalize } from '@utils';
 import {
   Container,
   ScheduledDate,
@@ -25,6 +28,17 @@ type GameBet = {
   homeScore: number;
   awayScore: number;
 };
+
+function getCrest(teamName: string): JSX.Element {
+  const parsedTeamName = normalize(teamName).replaceAll(' ', '');
+  const HomeCrest = crests[parsedTeamName];
+  console.log(crests, parsedTeamName);
+  if (HomeCrest) {
+    // eslint-disable-next-line react/jsx-pascal-case
+    return <HomeCrest.default width={50} height={50} />;
+  }
+  return <MaterialCommunityIcons name="soccer" size={50} />;
+}
 
 export const GameBetInput = ({
   gameBet,
@@ -51,7 +65,6 @@ export const GameBetInput = ({
   const onBetEdit = () => onEdit(gameBet._id);
 
   const formatDate = (date: string) => dayjs(date).format('YYYY-MM-DD HH:mm');
-
   return (
     <Container>
       <ScheduledDate>
@@ -61,11 +74,13 @@ export const GameBetInput = ({
       </ScheduledDate>
       <DetailsContainer>
         <TeamName isSelected={homeScore > awayScore}>{homeTeam.name}</TeamName>
+        {getCrest(homeTeam.name)}
         <InputContainer>
           <ScoreInput onChangeText={onHomeScoreChange} />
           <Separator>:</Separator>
           <ScoreInput onChangeText={onAwayScoreChange} />
         </InputContainer>
+        {getCrest(awayTeam.name)}
         <TeamName isSelected={awayScore > homeScore}>{awayTeam.name}</TeamName>
       </DetailsContainer>
       <Confirm

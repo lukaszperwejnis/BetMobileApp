@@ -35,6 +35,6 @@
       "@utils": ["utils/index.ts"],
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "global.d.ts"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }
