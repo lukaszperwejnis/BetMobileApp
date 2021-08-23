@@ -7,6 +7,8 @@ import { setPassword } from './setPassword';
 import { invalidToken } from './invalidToken';
 import { errors } from './errors';
 import { pages } from './pages';
+import { components } from './components';
+import { dashboard } from './dashboard';
 
 export const pl = {
   ...fields,
@@ -18,4 +20,6 @@ export const pl = {
   ...invalidToken,
   ...errors,
   ...pages,
+  ...components,
+  ...dashboard,
 };

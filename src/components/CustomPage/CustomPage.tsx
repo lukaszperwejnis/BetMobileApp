@@ -1,5 +1,10 @@
 import React from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import {
+  ActivityIndicator,
+  SafeAreaView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import { WithChildrenProps } from '@structures';
 import { CenterWrapper } from '@components';
 import { stylesConfig } from '@styles';

@@ -45,7 +45,7 @@ export const TextInputFormField = ({
         autoCapitalize="none"
         {...props}
       />
-      <>{hasError && error && <Error data-error={field.name}>{error}</Error>}</>
+      <>{hasError && error && <Error>{error}</Error>}</>
       <>{description && <Description>{description}</Description>}</>
     </Wrapper>
   );

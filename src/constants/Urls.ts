@@ -15,8 +15,8 @@ export const URLS = {
     REFRESH_TOKEN: getUrl('/verify/refresh/'),
     MAIL_INVITATION: getUrl('/verify/mail-invitation/'),
   },
-  BET: {
-    AVAILABLE: getUrl('/api/bets/available'),
+  BETS: {
+    GET: getUrl('/api/bets'),
     USER: getUrl('/api/bets/user'),
     CREATE: getUrl('/api/bets'),
   },

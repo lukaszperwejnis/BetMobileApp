@@ -14,9 +14,9 @@ export type RequestConfigType = Partial<{
 }>;
 export type RequestOptionsType = Omit<RequestConfigType, 'payload'>;
 
-export function getMappedRequestOptions(
+export async function getMappedRequestOptions(
   options: RequestOptionsType,
-): Record<string, unknown> {
+): Promise<Record<string, unknown>> {
   const { authRequired, requestConfig } = options;
   if (!authRequired && !requestConfig) {
     return {
@@ -33,7 +33,8 @@ export function getMappedRequestOptions(
       ...requestConfig,
     };
   }
-  const token = tokenService.getAccessToken();
+  const token = await tokenService.getAccessToken();
+
   if (!token) {
     throw new Error('Missing access token');
   }

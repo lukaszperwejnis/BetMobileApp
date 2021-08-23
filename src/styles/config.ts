@@ -29,6 +29,8 @@ export const config = {
     small: '12px',
     normal: '15px',
     large: '25px',
+    big: '30px',
+    huge: '35px',
   },
   opacity: {
     disabled: 0.5,

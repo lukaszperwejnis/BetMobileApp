@@ -9,11 +9,27 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* BetMobileAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BetMobileAppTests.m */; };
 		00E96CF50AEDC138300A29BD /* libPods-BetMobileApp-BetMobileAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1555AEE328F726837DCBBB59 /* libPods-BetMobileApp-BetMobileAppTests.a */; };
+		0CE6ECC1F17A45A2882BCF54 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D607D1B989EC444B877B8865 /* Fontisto.ttf */; };
+		1093E8FACDFA4689BE818B86 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 883C640B7804465FAA361513 /* SimpleLineIcons.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		165851E82FB7496AA1BE7086 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB9C48B92BEB47FF860E2BA7 /* Ionicons.ttf */; };
+		1E22465748C04E1198F43E56 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34D92F829C074BC89B3EBD7A /* AntDesign.ttf */; };
+		28336C315884489AB31B4E9A /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7C6787B1740409693BFE8DC /* EvilIcons.ttf */; };
+		37EB72CF63E64568B8D1D7EF /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8AA5F52D0334418F9DBB43C9 /* Entypo.ttf */; };
+		507A996D2725455B8F99CB4B /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 589D0AE744734C3489290D07 /* MaterialCommunityIcons.ttf */; };
+		64E23588280B4AD4A3128F89 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44980A7D86C5459EBBCFD1B0 /* FontAwesome.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B5C5CC7AACC94A69A7FC686A /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB85E2E5334E1D8FA74C04 /* Foundation.ttf */; };
+		BBE0942CD4554A6E9010E2A3 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 399605087E8344A6A35AB65F /* Octicons.ttf */; };
+		C1828408A6514E82BE44E99C /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF11C12C95B2401D872065EC /* FontAwesome5_Brands.ttf */; };
+		C206934F329648529EBDD445 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 881BEB15DFCC485FAB1D0E59 /* MaterialIcons.ttf */; };
 		C23ECA13C0CB6991D24D4ABF /* libPods-BetMobileApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD0C184FDDA4376286E058C /* libPods-BetMobileApp.a */; };
+		C4DF91F57636453BAFDBB886 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA2994958D4C4570B9B7A393 /* FontAwesome5_Solid.ttf */; };
+		D077A5E826CC44BA9E3E438A /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55C113F1CA9449BA95FD2B7F /* Feather.ttf */; };
+		E3F0E4999CF04A9DB0CE63BC /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9936522A4BBB4E44803FB09D /* FontAwesome5_Regular.ttf */; };
+		FB71270A12A14AE1B5A0AA83 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D594347BECDA4D8B9E7231F9 /* Zocial.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +53,25 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BetMobileApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BetMobileApp/main.m; sourceTree = "<group>"; };
 		1555AEE328F726837DCBBB59 /* libPods-BetMobileApp-BetMobileAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BetMobileApp-BetMobileAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34D92F829C074BC89B3EBD7A /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		399605087E8344A6A35AB65F /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		44980A7D86C5459EBBCFD1B0 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		55C113F1CA9449BA95FD2B7F /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		589D0AE744734C3489290D07 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		6FDB85E2E5334E1D8FA74C04 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BetMobileApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		881BEB15DFCC485FAB1D0E59 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		883C640B7804465FAA361513 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		8AA5F52D0334418F9DBB43C9 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		923E1AB4189EEC5B4C3A651A /* Pods-BetMobileApp-BetMobileAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetMobileApp-BetMobileAppTests.release.xcconfig"; path = "Target Support Files/Pods-BetMobileApp-BetMobileAppTests/Pods-BetMobileApp-BetMobileAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		9936522A4BBB4E44803FB09D /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		B5BFA93701A9D1CFB6E8935F /* Pods-BetMobileApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetMobileApp.debug.xcconfig"; path = "Target Support Files/Pods-BetMobileApp/Pods-BetMobileApp.debug.xcconfig"; sourceTree = "<group>"; };
+		BB9C48B92BEB47FF860E2BA7 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		C7C6787B1740409693BFE8DC /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		CF11C12C95B2401D872065EC /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		D594347BECDA4D8B9E7231F9 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		D607D1B989EC444B877B8865 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		DA2994958D4C4570B9B7A393 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		DB7EB493726E87759538EF66 /* Pods-BetMobileApp-BetMobileAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetMobileApp-BetMobileAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BetMobileApp-BetMobileAppTests/Pods-BetMobileApp-BetMobileAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF00494DCB1C1A50559DB978 /* Pods-BetMobileApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetMobileApp.release.xcconfig"; path = "Target Support Files/Pods-BetMobileApp/Pods-BetMobileApp.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -106,6 +138,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		60B90D43565F4AA5B06A1920 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				34D92F829C074BC89B3EBD7A /* AntDesign.ttf */,
+				8AA5F52D0334418F9DBB43C9 /* Entypo.ttf */,
+				C7C6787B1740409693BFE8DC /* EvilIcons.ttf */,
+				55C113F1CA9449BA95FD2B7F /* Feather.ttf */,
+				44980A7D86C5459EBBCFD1B0 /* FontAwesome.ttf */,
+				CF11C12C95B2401D872065EC /* FontAwesome5_Brands.ttf */,
+				9936522A4BBB4E44803FB09D /* FontAwesome5_Regular.ttf */,
+				DA2994958D4C4570B9B7A393 /* FontAwesome5_Solid.ttf */,
+				D607D1B989EC444B877B8865 /* Fontisto.ttf */,
+				6FDB85E2E5334E1D8FA74C04 /* Foundation.ttf */,
+				BB9C48B92BEB47FF860E2BA7 /* Ionicons.ttf */,
+				589D0AE744734C3489290D07 /* MaterialCommunityIcons.ttf */,
+				881BEB15DFCC485FAB1D0E59 /* MaterialIcons.ttf */,
+				399605087E8344A6A35AB65F /* Octicons.ttf */,
+				883C640B7804465FAA361513 /* SimpleLineIcons.ttf */,
+				D594347BECDA4D8B9E7231F9 /* Zocial.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +178,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				856481B51E93747A0619DE12 /* Pods */,
+				60B90D43565F4AA5B06A1920 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -245,6 +302,22 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				1E22465748C04E1198F43E56 /* AntDesign.ttf in Resources */,
+				37EB72CF63E64568B8D1D7EF /* Entypo.ttf in Resources */,
+				28336C315884489AB31B4E9A /* EvilIcons.ttf in Resources */,
+				D077A5E826CC44BA9E3E438A /* Feather.ttf in Resources */,
+				64E23588280B4AD4A3128F89 /* FontAwesome.ttf in Resources */,
+				C1828408A6514E82BE44E99C /* FontAwesome5_Brands.ttf in Resources */,
+				E3F0E4999CF04A9DB0CE63BC /* FontAwesome5_Regular.ttf in Resources */,
+				C4DF91F57636453BAFDBB886 /* FontAwesome5_Solid.ttf in Resources */,
+				0CE6ECC1F17A45A2882BCF54 /* Fontisto.ttf in Resources */,
+				B5C5CC7AACC94A69A7FC686A /* Foundation.ttf in Resources */,
+				165851E82FB7496AA1BE7086 /* Ionicons.ttf in Resources */,
+				507A996D2725455B8F99CB4B /* MaterialCommunityIcons.ttf in Resources */,
+				C206934F329648529EBDD445 /* MaterialIcons.ttf in Resources */,
+				BBE0942CD4554A6E9010E2A3 /* Octicons.ttf in Resources */,
+				1093E8FACDFA4689BE818B86 /* SimpleLineIcons.ttf in Resources */,
+				FB71270A12A14AE1B5A0AA83 /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
