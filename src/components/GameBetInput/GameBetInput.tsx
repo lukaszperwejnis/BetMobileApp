@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import { GameBet as GameBetType } from '@structures';
 import { useTranslation } from '@hooks';
-import { crests } from '@assets/crests';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { normalize } from '@utils';
+import { TeamCrest } from '@components';
 import {
   Container,
   ScheduledDate,
   DetailsContainer,
   InputContainer,
-  TeamName,
+  HomeTeam,
+  AwayTeam,
   ScoreInput,
   Separator,
   Confirm,
@@ -29,17 +28,6 @@ type GameBet = {
   awayScore: number;
 };
 
-function getCrest(teamName: string): JSX.Element {
-  const parsedTeamName = normalize(teamName).replaceAll(' ', '');
-  const HomeCrest = crests[parsedTeamName];
-  console.log(crests, parsedTeamName);
-  if (HomeCrest) {
-    // eslint-disable-next-line react/jsx-pascal-case
-    return <HomeCrest.default width={50} height={50} />;
-  }
-  return <MaterialCommunityIcons name="soccer" size={50} />;
-}
-
 export const GameBetInput = ({
   gameBet,
   onConfirm,
@@ -47,19 +35,19 @@ export const GameBetInput = ({
   confirmed,
 }: GameBetProps): JSX.Element => {
   const translate = useTranslation();
-  const [homeScore, setHomeScore] = useState<number>(0);
-  const [awayScore, setAwayScore] = useState<number>(0);
+  const [homeScore, setHomeScore] = useState<string>('');
+  const [awayScore, setAwayScore] = useState<string>('');
 
   const { scheduledDate, homeTeam, awayTeam } = gameBet;
 
-  const onHomeScoreChange = (score: string) => setHomeScore(+score);
-  const onAwayScoreChange = (score: string) => setAwayScore(+score);
+  const onHomeScoreChange = (score: string) => setHomeScore(score);
+  const onAwayScoreChange = (score: string) => setAwayScore(score);
 
   const onBetConfirm = () =>
     onConfirm({
       gameId: gameBet._id,
-      homeScore,
-      awayScore,
+      homeScore: +homeScore,
+      awayScore: +awayScore,
     });
 
   const onBetEdit = () => onEdit(gameBet._id);
@@ -73,19 +61,29 @@ export const GameBetInput = ({
         })}
       </ScheduledDate>
       <DetailsContainer>
-        <TeamName isSelected={homeScore > awayScore}>{homeTeam.name}</TeamName>
-        {getCrest(homeTeam.name)}
+        <HomeTeam isSelected={homeScore > awayScore}>{homeTeam.name}</HomeTeam>
+        <TeamCrest teamName={homeTeam.name} />
         <InputContainer>
-          <ScoreInput onChangeText={onHomeScoreChange} />
+          <ScoreInput
+            value={homeScore}
+            onChangeText={onHomeScoreChange}
+            editable={!confirmed}
+          />
           <Separator>:</Separator>
-          <ScoreInput onChangeText={onAwayScoreChange} />
+          <ScoreInput
+            value={awayScore}
+            onChangeText={onAwayScoreChange}
+            editable={!confirmed}
+          />
         </InputContainer>
-        {getCrest(awayTeam.name)}
-        <TeamName isSelected={awayScore > homeScore}>{awayTeam.name}</TeamName>
+        <TeamCrest teamName={awayTeam.name} />
+        <AwayTeam isSelected={awayScore > homeScore}>{awayTeam.name}</AwayTeam>
       </DetailsContainer>
       <Confirm
+        disabled={!homeScore || !awayScore}
         title={translate(`gameBet.cta.${confirmed ? 'edit' : 'add'}`)}
         onPress={confirmed ? onBetEdit : onBetConfirm}
+        confirmed={confirmed}
       />
     </Container>
   );

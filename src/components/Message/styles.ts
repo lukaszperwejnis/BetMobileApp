@@ -18,7 +18,6 @@ export const Container = styled.Text<ContainerProps>`
   background-color: ${stylesConfig.color.white};
   border-radius: 4px;
   padding: ${stylesConfig.spacing.extraSmall} ${stylesConfig.spacing.normal};
-  font-family: ${stylesConfig.fontFamily.primary};
   font-size: ${stylesConfig.fontSize.normal};
   color: ${stylesConfig.color.white};
   text-align: center;

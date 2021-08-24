@@ -32,7 +32,10 @@ function* reset(action: SagaParameter<ResetAction>): unknown {
   try {
     yield call(passwordService.reset, action.payload);
     yield put(successReset());
-    yield call(messageActions.success, translate('resetPassword.success'));
+    yield call(
+      messageActions.success,
+      translate('pages.resetPassword.success'),
+    );
     yield call(navigate as any, RouteName.Login);
   } catch (error) {
     if (tokenService.isInvalidTokenError(error.response.data)) {

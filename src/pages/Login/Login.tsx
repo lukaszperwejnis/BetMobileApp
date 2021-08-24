@@ -43,7 +43,7 @@ export const Login = ({ navigation }: LoginProps): JSX.Element => {
     navigation.navigate(RouteName.StartResetPassword);
 
   return (
-    <CustomPage title={translate('login.header')} isLoading={isLoading}>
+    <CustomPage title={translate('pages.login.header')} isLoading={isLoading}>
       <Formik
         validationSchema={schema}
         initialValues={formInitialsValues}
@@ -63,13 +63,13 @@ export const Login = ({ navigation }: LoginProps): JSX.Element => {
             <Submit
               disabled={isLoading}
               onPress={handleSubmit as any}
-              title={translate('login.submit')}
+              title={translate('pages.login.submit')}
             />
           </TouchableOpacity>
         )}
       </Formik>
       <PasswordRestLink onPress={onGoToResetPassword}>
-        {translate('login.forgotPassword')}
+        {translate('pages.login.forgotPassword')}
       </PasswordRestLink>
     </CustomPage>
   );

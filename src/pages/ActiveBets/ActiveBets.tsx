@@ -1,46 +1,132 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Button, FlatList, Text } from 'react-native';
-import { GameBetInput } from '@components';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList, RouteName } from '@navigation';
 import { betService } from '@services';
-import { GameBet as GameBetType } from '@structures';
+import { GameStatus } from '@structures';
 import { useTranslation } from '@hooks';
-import { StyledCustomPage } from './styles';
-import { GameStatus } from '../../structures/GameStatus';
+import {
+  EmptyState,
+  GameBetPreview,
+  Submit,
+  TeamCrest,
+  GameItemDivider,
+} from '@components';
+import {
+  StyledCustomPage,
+  Section,
+  SectionName,
+  ChampionContainer,
+  ChampionName,
+  StyledList,
+  SectionDivider,
+} from './styles';
 
-export const ActiveBets = (): JSX.Element => {
+type GameBetItem = {
+  _id: string;
+  homeTeam: {
+    score: number;
+    name: string;
+  };
+  awayTeam: {
+    score: number;
+    name: string;
+  };
+  scheduledDate: string;
+};
+
+export interface ActiveBetsProps {
+  navigation: StackNavigationProp<RootStackParamList, RouteName.ActiveBets>;
+}
+
+export const ActiveBets = ({ navigation }: ActiveBetsProps): JSX.Element => {
   const translate = useTranslation();
-  const [activeGameBets, setActiveGameBets] = useState<GameBetType[]>([]);
-  // const [activeChampionBet, setActiveChampionBet] = useState<unknown[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [championBet, setChampionBet] = useState<null | any>(null);
+  const [gameBets, setGameBets] = useState<GameBetItem[]>([]);
+  const hasNoActiveBets = !isLoading && !championBet && !gameBets.length;
 
-  const fetchActiveBets = () =>
-    betService
-      .getUserBets({ status: GameStatus.Scheduled })
-      .then((result: any) => {
-        setActiveGameBets(result.data.availableGames);
-        setActiveGameBets(result.data.availableChampions);
-      });
+  const fetchActiveBets = async () => {
+    const result = await betService.getUserBets({
+      status: GameStatus.Scheduled,
+    });
+
+    const mappedGameBets = result.data.gameBets.map((gameBet: any) => ({
+      _id: gameBet._id,
+      homeTeam: {
+        name: gameBet.game.homeTeam.name,
+        score: gameBet.homeScore,
+      },
+      awayTeam: {
+        name: gameBet.game.awayTeam.name,
+        score: gameBet.awayScore,
+      },
+      scheduledDate: gameBet.game.scheduledDate,
+    }));
+
+    setGameBets(mappedGameBets);
+    setChampionBet(result.data.championBet);
+
+    setIsLoading(false);
+  };
+
+  const goToAvailableBets = (): void =>
+    navigation.navigate(RouteName.AvailableBets);
 
   useEffect(() => {
     fetchActiveBets();
   }, []);
 
   return (
-    <StyledCustomPage>
-      <Text>{translate('dashboard.header')}</Text>
-      {/* {Boolean(activeGameBets.length) && ( */}
-      {/*  <FlatList */}
-      {/*    keyExtractor={({ _id }) => _id} */}
-      {/*    data={activeGameBets} */}
-      {/*    renderItem={({ item }) => ( */}
-      {/*      <GameBetItem */}
-      {/*        gameBet={item} */}
-      {/*        onConfirm={onConfirmBet} */}
-      {/*        onEdit={onEditBet} */}
-      {/*        confirmed={Boolean(gameBets[item._id])} */}
-      {/*      /> */}
-      {/*    )} */}
-      {/*  /> */}
-      {/* )} */}
+    <StyledCustomPage isLoading={isLoading} withSpacingAround={false}>
+      {hasNoActiveBets && (
+        <EmptyState
+          text={translate('pages.activeBets.emptyState')}
+          icon="emoticon-sad-outline">
+          <Submit
+            title={translate('pages.activeBets.cta.goToActivePage')}
+            onPress={goToAvailableBets}
+          />
+        </EmptyState>
+      )}
+      {!hasNoActiveBets && (
+        <>
+          {Boolean(championBet) && (
+            <Section>
+              <SectionName>
+                {translate('pages.activeBets.championBet')}
+              </SectionName>
+              <ChampionContainer>
+                <ChampionName>{championBet.bet.name}</ChampionName>
+                <TeamCrest teamName={championBet.bet.name} />
+              </ChampionContainer>
+            </Section>
+          )}
+          {Boolean(gameBets.length) && Boolean(championBet) && (
+            <SectionDivider />
+          )}
+          {Boolean(gameBets.length) && (
+            <Section>
+              <SectionName>
+                {translate('pages.activeBets.gameBets')}
+              </SectionName>
+              <StyledList
+                keyExtractor={({ _id }: any) => _id}
+                data={gameBets}
+                renderItem={({ item, index }: any) => (
+                  <>
+                    {index !== 0 && <GameItemDivider />}
+                    <GameBetPreview
+                      homeTeam={item.homeTeam}
+                      awayTeam={item.awayTeam}
+                      scheduledDate={item.scheduledDate}
+                    />
+                  </>
+                )}
+              />
+            </Section>
+          )}
+        </>
+      )}
     </StyledCustomPage>
   );
 };

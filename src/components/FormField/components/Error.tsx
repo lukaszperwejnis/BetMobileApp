@@ -6,5 +6,4 @@ export const Error = styled.Text<WithChildrenProps>`
   margin-top: ${stylesConfig.spacing.extraSmall};
   font-size: ${stylesConfig.fontSize.small};
   color: ${stylesConfig.color.guardsmanRed};
-  font-family: ${stylesConfig.fontFamily.primary};
 `;

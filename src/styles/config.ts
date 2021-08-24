@@ -39,8 +39,8 @@ export const config = {
     primary: 'Georgia',
   },
   fontWeight: {
-    bold: 500,
-    bolder: 700,
+    bold: 400,
+    bolder: '700',
   },
   zIndex: {
     sidebar: 400,

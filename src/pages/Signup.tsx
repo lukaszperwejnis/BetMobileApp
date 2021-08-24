@@ -60,7 +60,7 @@ export const Signup = ({ route }: SignupProps): JSX.Element => {
   }
 
   return (
-    <CustomPage title={translate('signup.header')} isLoading={isLoading}>
+    <CustomPage title={translate('pages.signup.header')} isLoading={isLoading}>
       <Formik
         validationSchema={schema}
         initialValues={formInitialValues}
@@ -94,7 +94,7 @@ export const Signup = ({ route }: SignupProps): JSX.Element => {
             <Submit
               onPress={handleSubmit as any}
               disabled={isLoading}
-              title={translate('signup.submit')}
+              title={translate('pages.signup.submit')}
             />
           </TouchableOpacity>
         )}

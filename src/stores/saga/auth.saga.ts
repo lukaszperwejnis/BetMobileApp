@@ -50,7 +50,7 @@ function* login(action: SagaParameter<LoginAction>) {
 function* signup(action: SagaParameter<SignupAction>) {
   try {
     yield call(authService.signup, action.payload);
-    yield call(messageActions.success, translate('signup.success'));
+    yield call(messageActions.success, translate('pages.signup.success'));
     yield put(successSignup());
     yield call(navigate as any, RouteName.Login);
   } catch (error) {

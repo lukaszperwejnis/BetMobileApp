@@ -13,7 +13,7 @@ import { confirmedPasswordSchema, passwordSchema } from '@field-schemas';
 import { tokenService } from '@services';
 import { invalidTokenReset } from '@stores/actions/password.actions';
 import { CustomPage, FormField, Submit } from '@components';
-import { InvalidTokenPage } from '../InvalidToken';
+import { InvalidTokenPage } from './InvalidToken';
 
 export interface ResetPasswordProps {
   navigation: StackNavigationProp<RootStackParamList, RouteName.ResetPassword>;
@@ -58,7 +58,9 @@ export const ResetPassword = ({ route }: ResetPasswordProps): JSX.Element => {
   }
 
   return (
-    <CustomPage title={translate('resetPassword.header')} isLoading={isLoading}>
+    <CustomPage
+      title={translate('pages.resetPassword.header')}
+      isLoading={isLoading}>
       <Formik
         validationSchema={schema}
         initialValues={formInitialValues}
@@ -78,7 +80,7 @@ export const ResetPassword = ({ route }: ResetPasswordProps): JSX.Element => {
             <Submit
               onPress={handleSubmit as any}
               disabled={isLoading}
-              title={translate('resetPassword.cta.submit')}
+              title={translate('pages.resetPassword.cta.submit')}
             />
           </TouchableOpacity>
         )}

@@ -6,5 +6,4 @@ export const Title = styled.Text`
   font-size: ${stylesConfig.fontSize.large};
   color: ${stylesConfig.color.textColor};
   font-weight: ${stylesConfig.fontWeight.bold};
-  font-family: ${stylesConfig.fontFamily.primary};
 `;

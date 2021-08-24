@@ -19,3 +19,4 @@ export type { SchemaValidationError } from './SchemaValidationError';
 export { ErrorCodes } from './ErrorCodes';
 export type { GameBet } from './GameBet';
 export { GameStatus } from './GameStatus';
+export { Team } from './Team';

@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  ActivityIndicator,
-  SafeAreaView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { WithChildrenProps } from '@structures';
 import { CenterWrapper } from '@components';
 import { stylesConfig } from '@styles';
@@ -13,6 +8,7 @@ import { Title, Description } from './styles';
 interface PageTitleProps extends WithChildrenProps {
   title?: string;
   isLoading?: boolean;
+  withSpacingAround?: boolean;
 }
 
 const styles = StyleSheet.create({
@@ -39,10 +35,12 @@ export const CustomPage = ({
   title,
   children,
   isLoading,
+  withSpacingAround = true,
+  ...props
 }: PageTitleProps): JSX.Element => (
-  <CenterWrapper>
+  <CenterWrapper {...props}>
     <>{title && <Title>{title}</Title>}</>
-    <Description>{children}</Description>
+    <Description withSpacingAround={withSpacingAround}>{children}</Description>
     <>{isLoading && <Loading />}</>
   </CenterWrapper>
 );

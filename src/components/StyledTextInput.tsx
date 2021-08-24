@@ -17,7 +17,6 @@ export const StyledTextInput = styled.TextInput<StyledTextInputProps>`
   font-size: ${stylesConfig.fontSize.normal};
   padding: 7px 14px;
   min-width: 50%;
-  font-family: ${stylesConfig.fontFamily.primary};
   ${(props: StyledTextInputProps) =>
     props.isInvalid &&
     css`

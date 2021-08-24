@@ -6,5 +6,4 @@ export const Description = styled.Text<WithChildrenProps>`
   color: ${stylesConfig.color.textColor};
   font-size: ${stylesConfig.fontSize.small};
   margin: ${stylesConfig.spacing.small} 0;
-  font-family: ${stylesConfig.fontFamily.primary};
 `;

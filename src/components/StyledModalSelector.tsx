@@ -7,6 +7,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   select: {
     borderColor: stylesConfig.color.primary,
+    marginBottom: 20,
+    borderRadius: 0,
   },
 });
 
@@ -34,7 +36,6 @@ export const StyledModalSelector = ({
       selectStyle={styles.select}
       selectTextStyle={{
         color: stylesConfig.color.primary,
-        fontFamily: stylesConfig.fontFamily.primary,
       }}
       initValueTextStyle={{
         color: stylesConfig.color.primary,

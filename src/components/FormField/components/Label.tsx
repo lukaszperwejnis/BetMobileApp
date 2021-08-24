@@ -11,7 +11,6 @@ export const Label = styled.Text<LabelProps>`
   font-size: ${stylesConfig.fontSize.normal};
   color: ${stylesConfig.color.textColor};
   font-weight: ${stylesConfig.fontWeight.bold};
-  font-family: ${stylesConfig.fontFamily.primary};
 
   ${(props: LabelProps) =>
     props.withSpacingTop &&

@@ -6,8 +6,8 @@ import { useTranslation } from '@hooks';
 export const InvalidTokenPage = (): JSX.Element => {
   const translate = useTranslation();
   return (
-    <CustomPage title={translate('invalidToken.header')}>
-      <Text>{translate('invalidToken.description')}</Text>
+    <CustomPage title={translate('pages.invalidToken.header')}>
+      <Text>{translate('pages.invalidToken.description')}</Text>
     </CustomPage>
   );
 };

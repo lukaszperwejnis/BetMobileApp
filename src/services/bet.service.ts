@@ -1,5 +1,5 @@
 import { URLS } from '@constants';
-import { GameStatus } from '@structures';
+import { GameBet, GameStatus, Team } from '@structures';
 import { ApiService } from './ApiService/ApiService';
 
 type UserBetsFilters = {
@@ -15,13 +15,31 @@ type CreateBetsPayload = {
   champion?: { teamId: string };
 };
 
+type GetBetsSuccessResponse = {
+  data: {
+    availableGames: GameBet[];
+    availableChampions: Team[];
+  };
+};
+
+type GetUserBetsSuccessResponse = {
+  data: {
+    gameBets: any[];
+    championBet: any;
+  };
+};
+
 export class BetService extends ApiService {
-  getBets = async <T>({ status }: UserBetsFilters): Promise<T> =>
-    this.get<T>(`${URLS.BETS.GET}?status=${status}`, {
+  getBets = async ({
+    status,
+  }: UserBetsFilters): Promise<GetBetsSuccessResponse> =>
+    this.get<GetBetsSuccessResponse>(`${URLS.BETS.GET}?status=${status}`, {
       authRequired: true,
     });
 
-  getUserBets = async ({ status }: UserBetsFilters): Promise<unknown> =>
+  getUserBets = async ({
+    status,
+  }: UserBetsFilters): Promise<GetUserBetsSuccessResponse> =>
     this.get(`${URLS.BETS.USER}?status=${status}`, {
       authRequired: true,
     });

@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Button, FlatList, Text } from 'react-native';
-import { GameBetInput, StyledModalSelector } from '@components';
+import { StackNavigationProp } from '@react-navigation/stack';
+import {
+  GameBetInput,
+  StyledModalSelector,
+  Submit,
+  EmptyState,
+  GameItemDivider,
+} from '@components';
 import { betService } from '@services';
 import { GameBet as GameBetType, GameStatus } from '@structures';
 import { useTranslation } from '@hooks';
-import { StyledCustomPage } from './styles';
+import { RootStackParamList, RouteName } from '@navigation';
+import { StyledCustomPage, StyledList, Wrapper } from './styles';
+
+export interface AvailableBetsProps {
+  navigation: StackNavigationProp<RootStackParamList, RouteName.AvailableBets>;
+}
 
 type GameBetInput = {
   gameId: string;
@@ -12,12 +23,15 @@ type GameBetInput = {
   awayScore: number;
 };
 
-export const AvailableBets = (): JSX.Element => {
+export const AvailableBets = ({
+  navigation,
+}: AvailableBetsProps): JSX.Element => {
   const translate = useTranslation();
   const [availableGameBets, setAvailableGameBets] = useState<GameBetType[]>([]);
   const [availableChampionBets, setAvailableChampionBets] = useState<
     { key: string; label: string }[]
   >([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const [gameBets, setGameBets] = useState<{
     [key: string]: GameBetInput;
@@ -27,41 +41,61 @@ export const AvailableBets = (): JSX.Element => {
     null,
   );
 
-  const hasAnyBets = Boolean(Object.keys(gameBets) || championBet);
+  const hasNoAvailableBets =
+    !isLoading &&
+    availableGameBets.length === 0 &&
+    availableChampionBets.length === 0;
+
+  const hasAnyBets = Boolean(Object.keys(gameBets).length || championBet);
 
   const onChampionBetChange = ({ key }: { key: string; label: string }) =>
     setChampionBet({ teamId: key });
 
-  const fetchAvailableBets = () =>
-    betService.getBets({ status: GameStatus.Scheduled }).then((result: any) => {
-      setAvailableGameBets(result.data.availableGames);
-      setAvailableChampionBets(
-        result.data.availableChampions.map(
-          ({ _id, name }: { _id: string; name: string }) => ({
-            key: _id,
-            label: name,
-          }),
-        ),
-      );
-    });
+  const fetchAvailableBets = async () => {
+    const result = await betService.getBets({ status: GameStatus.Scheduled });
+    const { availableGames, availableChampions } = result.data;
+
+    setAvailableGameBets(availableGames);
+    setAvailableChampionBets(
+      availableChampions.map(
+        ({ _id, name }: { _id: string; name: string }) => ({
+          key: _id,
+          label: name,
+        }),
+      ),
+    );
+
+    setIsLoading(false);
+  };
 
   useEffect(() => {
     fetchAvailableBets();
   }, []);
 
-  const createBets = () => {
+  const createBets = async () => {
     if (!hasAnyBets) {
       return;
     }
 
-    betService.createBets({
+    const response: any = await betService.createBets({
       games: Object.keys(gameBets).length ? Object.values(gameBets) : undefined,
       champion: championBet || undefined,
     });
+
+    if (response.status === 200) {
+      setIsLoading(true);
+      setChampionBet(null);
+      setGameBets({});
+      fetchAvailableBets();
+      navigation.navigate(RouteName.ActiveBets);
+    }
   };
 
   const onConfirmBet = (gameBet: GameBetInput) => {
-    setGameBets({ ...gameBets, [gameBet.gameId]: gameBet });
+    setGameBets((prevGameBets) => ({
+      ...prevGameBets,
+      [gameBet.gameId]: gameBet,
+    }));
   };
 
   const onEditBet = (gameId: string) => {
@@ -74,30 +108,56 @@ export const AvailableBets = (): JSX.Element => {
   };
 
   return (
-    <StyledCustomPage>
-      <Text>{translate('dashboard.header')}</Text>
-      <Button
-        title={translate('dashboard.cta')}
-        onPress={createBets}
-        disabled={!hasAnyBets}
-      />
-      <StyledModalSelector
-        initValue={translate('dashboard.championBet.initialValue')}
-        data={availableChampionBets}
-        onChange={onChampionBetChange as any}
-      />
-      <FlatList
-        keyExtractor={({ _id }) => _id}
-        data={availableGameBets}
-        renderItem={({ item }) => (
-          <GameBetInput
-            gameBet={item}
-            onConfirm={onConfirmBet}
-            onEdit={onEditBet}
-            confirmed={Boolean(gameBets[item._id])}
-          />
-        )}
-      />
+    <StyledCustomPage isLoading={isLoading} withSpacingAround={false}>
+      {hasNoAvailableBets && (
+        <EmptyState
+          text={translate('pages.availableBets.emptyState')}
+          icon="emoticon-sad-outline"
+        />
+      )}
+      {!hasNoAvailableBets && (
+        <>
+          {Boolean(availableChampionBets.length) && (
+            <Wrapper>
+              <StyledModalSelector
+                initValue={translate(
+                  'pages.availableBets.championBet.initialValue',
+                )}
+                data={availableChampionBets}
+                onChange={onChampionBetChange as any}
+              />
+            </Wrapper>
+          )}
+
+          {Boolean(availableGameBets.length) && (
+            <StyledList
+              keyExtractor={({ _id }: any) => _id}
+              data={availableGameBets}
+              renderItem={({ item, index }: any) => (
+                <>
+                  {index !== 0 && <GameItemDivider />}
+                  <GameBetInput
+                    gameBet={item}
+                    onConfirm={onConfirmBet}
+                    onEdit={onEditBet}
+                    confirmed={Boolean(gameBets[item._id])}
+                  />
+                </>
+              )}
+            />
+          )}
+          {(Boolean(availableChampionBets.length) ||
+            Boolean(availableGameBets.length)) && (
+            <Wrapper>
+              <Submit
+                title={translate('pages.availableBets.cta')}
+                onPress={createBets}
+                disabled={!hasAnyBets}
+              />
+            </Wrapper>
+          )}
+        </>
+      )}
     </StyledCustomPage>
   );
 };

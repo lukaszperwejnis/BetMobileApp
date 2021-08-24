@@ -11,6 +11,8 @@ export type RootStackParamList = {
   [RouteName.StartResetPassword]: undefined;
   [RouteName.ResetPassword]: { token: string };
   [RouteName.Main]: undefined;
+  [RouteName.ActiveBets]: undefined;
+  [RouteName.AvailableBets]: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -22,23 +24,26 @@ export const NavigationStructure = (): JSX.Element => {
       <Stack.Screen
         name={RouteName.Login}
         component={Login}
-        options={{ title: translate('pages.login') }}
+        options={{ title: translate('pages.title.login') }}
       />
       <Stack.Screen
         name={RouteName.Signup}
         component={Signup}
-        options={{ title: translate('pages.signup'), headerLeft: () => null }}
+        options={{
+          title: translate('pages.title.signup'),
+          headerLeft: () => null,
+        }}
       />
       <Stack.Screen
         name={RouteName.StartResetPassword}
         component={StartResetPassword}
-        options={{ title: translate('pages.passwordReset') }}
+        options={{ title: translate('pages.title.passwordReset') }}
       />
       <Stack.Screen
         name={RouteName.ResetPassword}
         component={ResetPassword}
         options={{
-          title: translate('pages.setPassword'),
+          title: translate('pages.title.setPassword'),
           headerLeft: () => null,
         }}
       />

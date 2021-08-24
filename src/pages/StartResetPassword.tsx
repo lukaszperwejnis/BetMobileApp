@@ -2,11 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Button, Text } from 'react-native';
+import { Text } from 'react-native';
 import { useTranslation } from '@hooks';
 import { StoreType } from '@stores/index';
 import { startReset } from '@stores/actions';
-import { CustomPage, FormField } from '@components';
+import { CustomPage, FormField, Submit } from '@components';
 import { emailSchema } from '@field-schemas';
 
 type FormValues = {
@@ -43,10 +43,10 @@ export const StartResetPassword = (): JSX.Element => {
             name="email"
             placeholder={translate('fields.email')}
           />
-          <Button
+          <Submit
             onPress={handleSubmit as any}
             disabled={isLoading}
-            title={translate('startResetPassword.cta.submit')}
+            title={translate('pages.startResetPassword.cta.submit')}
           />
         </>
       )}
@@ -54,12 +54,12 @@ export const StartResetPassword = (): JSX.Element => {
   );
 
   const SuccessInfo = (): JSX.Element => (
-    <Text>{translate('startResetPassword.success')}</Text>
+    <Text>{translate('pages.startResetPassword.success')}</Text>
   );
 
   return (
     <CustomPage
-      title={translate('startResetPassword.header')}
+      title={translate('pages.startResetPassword.header')}
       isLoading={isLoading}>
       {isSuccess ? <SuccessInfo /> : <StartResetPasswordForm />}
     </CustomPage>
