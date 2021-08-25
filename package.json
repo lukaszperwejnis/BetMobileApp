@@ -5,6 +5,9 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "ios:dev": "react-native run-ios --configuration Debug --scheme BetMobileApp-DEV",
+    "ios:stage": "react-native run-ios --configuration Staging --scheme BetMobileApp-STAGE",
+    "ios:prod": "react-native run-ios --configuration Release --scheme BetMobileApp-PROD",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"

@@ -3,9 +3,6 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-pod 'Firebase/Analytics'
-pod 'Firebase/DynamicLinks'
-
 target 'BetMobileApp' do
   config = use_native_modules!
 
