@@ -9,6 +9,9 @@
     "ios:stage": "react-native run-ios --configuration Staging --scheme BetMobileApp-STAGE",
     "ios:prod": "react-native run-ios --configuration Release --scheme BetMobileApp-PROD",
     "start": "react-native start",
+    "android:dev": "ENVFILE=.env react-native run-android --variant=devDebug --appIdSuffix=dev",
+    "android:stage": "ENVFILE=.env.staging react-native run-android --variant=stageDebug --appIdSuffix=stage",
+    "android:prod": "ENVFILE=.env.production react-native run-android --variant=prodDebug --appIdSuffix=prod",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },

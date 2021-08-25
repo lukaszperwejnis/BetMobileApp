@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
 
@@ -136,6 +137,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        resValue "string", "build_config_package", "com.betmobileapp"
+
     }
     splits {
         abi {
@@ -166,6 +169,23 @@ android {
         }
     }
 
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            applicationId "com.betmobileapp.dev"
+            dimension "default"
+        }
+        stage {
+            applicationId "com.betmobileapp.stage"
+            dimension "default"
+        }
+        prod {
+            // .prodd local google play test using fastlane
+            applicationId "com.betmobileapp.prod"
+            dimension "default"
+        }
+    }
+
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -187,6 +207,8 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-config')
+
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
