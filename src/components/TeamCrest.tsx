@@ -1,7 +1,7 @@
 import React from 'react';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { normalize } from '@utils';
 import { crests } from '@assets/crests';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type TeamCrestProps = {
   teamName: string;
@@ -13,7 +13,7 @@ export const TeamCrest = ({
   size = 50,
   ...props
 }: TeamCrestProps): JSX.Element => {
-  const parsedTeamName = normalize(teamName).replaceAll(' ', '');
+  const parsedTeamName = normalize(teamName).replace(/ /g, '');
   const HomeCrest = crests[parsedTeamName];
 
   if (HomeCrest) {

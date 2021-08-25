@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 
 const Loading = () => (
   <View style={styles.loading}>
-    <ActivityIndicator size="large" />
+    <ActivityIndicator size="large" color={stylesConfig.color.primary} />
   </View>
 );
 

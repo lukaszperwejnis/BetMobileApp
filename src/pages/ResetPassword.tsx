@@ -51,7 +51,7 @@ export const ResetPassword = ({ route }: ResetPasswordProps): JSX.Element => {
     if (tokenService.isTokenInvalid(token)) {
       dispatch(invalidTokenReset());
     }
-  });
+  }, [dispatch, token]);
 
   if (hasInvalidToken) {
     return <InvalidTokenPage />;

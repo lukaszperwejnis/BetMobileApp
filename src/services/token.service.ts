@@ -1,3 +1,4 @@
+import { decode as atob } from 'base-64';
 import { StorageKeys } from '@constants';
 import { ErrorApiResponse } from '@structures';
 import { asyncStorageService } from './asyncStorage.service';
