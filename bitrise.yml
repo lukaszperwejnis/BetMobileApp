@@ -1,0 +1,61 @@
+---
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: react-native
+trigger_map:
+  - push_branch: "*"
+    workflow: deploy
+  - pull_request_source_branch: "*"
+    workflow: deploy
+workflows:
+  deploy:
+    steps:
+      - activate-ssh-key@4:
+          run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+      - git-clone@6: {}
+      - yarn@0:
+          inputs:
+            - command: install
+      - change-android-versioncode-and-versionname@1.2.3:
+          inputs:
+            - new_version_name: "$BITRISE_BUILD_NUMBER.0.0"
+            - build_gradle_path: "$BITRISE_SOURCE_DIR/android/app/build.gradle"
+      - android-build@1:
+          inputs:
+            - arguments: ''
+            - project_location: "$BITRISE_SOURCE_DIR/android"
+            - app_path_pattern: "*/build/outputs/apk/*.apk"
+            - module: app
+      - sign-apk@1:
+          inputs:
+            - android_app: " $BITRISE_DEPLOY_DIR/app-prod-release-unsigned.apk"
+      - google-play-deploy@3:
+          inputs:
+            - package_name: com.espeocreatereactnativeapp.prod
+            - track: alpha-test
+            - service_account_json_key_path: "$BITRISEIO_GOOGLE_PLAY_URL"
+      - cocoapods-install@2:
+          inputs:
+            - podfile_path: ios/Podfile
+      - certificate-and-profile-installer@1.10.3: {}
+      - set-xcode-build-number@1:
+          inputs:
+            - plist_path: "$BITRISE_SOURCE_DIR/ios/BetMobileApp/Info.plist"
+      - xcode-archive@3:
+          inputs:
+            - export_method: app-store
+            - scheme: BetMobileApp-PROD
+            - configuration: Release
+            - project_path: ios/BetMobileApp.xcworkspace
+      - deploy-to-itunesconnect-application-loader@1:
+          inputs:
+            - password: "$APPLE_ID_PASSWORD"
+            - app_password: "$APPLE_APPLICATION_PASSWORD"
+            - itunescon_user: "$APPLE_ID"
+      - deploy-to-bitrise-io@1: {}
+deploy-ios:
+app:
+  envs:
+    - ENVFILE: ".env.production"
+      opts:
+        is_expand: false
