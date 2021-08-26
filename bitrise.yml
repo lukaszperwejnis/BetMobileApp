@@ -31,7 +31,7 @@ workflows:
             - android_app: "$BITRISE_DEPLOY_DIR/app-prod-release-unsigned.apk"
       - google-play-deploy@3:
           inputs:
-            - package_name: com.espeocreatereactnativeapp.prod
+            - package_name: com.BetMobileApp.prod
             - track: alpha-test
             - service_account_json_key_path: "$BITRISEIO_GOOGLE_PLAY_URL"
       - cocoapods-install@2:
