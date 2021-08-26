@@ -28,7 +28,7 @@ workflows:
             - module: app
       - sign-apk@1:
           inputs:
-            - android_app: " $BITRISE_DEPLOY_DIR/app-prod-release-unsigned.apk"
+            - android_app: "$BITRISE_DEPLOY_DIR/app-prod-release-unsigned.apk"
       - google-play-deploy@3:
           inputs:
             - package_name: com.espeocreatereactnativeapp.prod
@@ -53,7 +53,6 @@ workflows:
             - app_password: "$APPLE_APPLICATION_PASSWORD"
             - itunescon_user: "$APPLE_ID"
       - deploy-to-bitrise-io@1: {}
-deploy-ios:
 app:
   envs:
     - ENVFILE: ".env.production"
