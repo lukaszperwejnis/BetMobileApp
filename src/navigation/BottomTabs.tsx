@@ -1,16 +1,25 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { StyleSheet } from 'react-native';
 import { ActiveBets, AvailableBets } from '@pages';
 import { useTranslation } from '@hooks';
 import { RouteName } from './RouteName';
 
 const Tab = createBottomTabNavigator();
 
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 75,
+  },
+});
+
 export const BottomTabs = (): JSX.Element => {
   const translate = useTranslation();
   return (
-    <Tab.Navigator initialRouteName={RouteName.AvailableBets}>
+    <Tab.Navigator
+      initialRouteName={RouteName.AvailableBets}
+      sceneContainerStyle={styles.container}>
       <Tab.Screen
         name={RouteName.AvailableBets}
         options={{

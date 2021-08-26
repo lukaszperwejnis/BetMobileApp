@@ -10,6 +10,7 @@ import * as FKShakhtarDonetsk from './FKShakhtarDonetsk.svg';
 import * as BSCYoungBoys from './BSCYoungBoys.svg';
 import * as BrondbyIF from './BrondbyIF.svg';
 import * as SportLisboaeBenfica from './SportLisboaeBenfica.svg';
+import * as FCMidtjylland from './FCMidtjylland.svg';
 
 export const crests: { [key: string]: any } = {
   PFKLudogorets1945Razgrad,
@@ -23,5 +24,6 @@ export const crests: { [key: string]: any } = {
   FKShakhtarDonetsk,
   BSCYoungBoys,
   BrondbyIF,
+  FCMidtjylland,
   SportLisboaeBenfica,
 };

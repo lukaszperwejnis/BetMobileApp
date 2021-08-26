@@ -2,9 +2,7 @@ import styled from 'styled-components/native';
 import { CustomPage } from '@components';
 import { stylesConfig } from '@styles';
 
-export const StyledCustomPage = styled(CustomPage)`
-  padding-top: 100px;
-`;
+export const StyledCustomPage = styled(CustomPage)``;
 
 export const Section = styled.View`
   justify-content: center;
