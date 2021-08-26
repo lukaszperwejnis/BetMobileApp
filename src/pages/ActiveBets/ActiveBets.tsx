@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList, RouteName } from '@navigation';
+import { useIsFocused } from '@react-navigation/native';
 import { betService } from '@services';
 import { GameStatus } from '@structures';
 import { useTranslation } from '@hooks';
 import {
   EmptyState,
   GameBetPreview,
+  GameItemDivider,
   Submit,
   TeamCrest,
-  GameItemDivider,
 } from '@components';
 import {
-  StyledCustomPage,
-  Section,
-  SectionName,
   ChampionContainer,
   ChampionName,
-  StyledList,
+  Section,
   SectionDivider,
+  SectionName,
+  StyledCustomPage,
+  StyledList,
 } from './styles';
 
 type GameBetItem = {
@@ -39,6 +40,7 @@ export interface ActiveBetsProps {
 }
 
 export const ActiveBets = ({ navigation }: ActiveBetsProps): JSX.Element => {
+  const isFocused = useIsFocused();
   const translate = useTranslation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [championBet, setChampionBet] = useState<null | any>(null);
@@ -74,7 +76,7 @@ export const ActiveBets = ({ navigation }: ActiveBetsProps): JSX.Element => {
 
   useEffect(() => {
     fetchActiveBets();
-  }, []);
+  }, [isFocused]);
 
   return (
     <StyledCustomPage isLoading={isLoading} withSpacingAround={false}>
@@ -110,6 +112,7 @@ export const ActiveBets = ({ navigation }: ActiveBetsProps): JSX.Element => {
                 {translate('pages.activeBets.gameBets')}
               </SectionName>
               <StyledList
+                hasFullHeight={!championBet}
                 keyExtractor={({ _id }: any) => _id}
                 data={gameBets}
                 renderItem={({ item, index }: any) => (

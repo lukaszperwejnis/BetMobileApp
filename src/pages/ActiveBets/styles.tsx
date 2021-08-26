@@ -1,8 +1,10 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { CustomPage } from '@components';
 import { stylesConfig } from '@styles';
 
-export const StyledCustomPage = styled(CustomPage)``;
+export const StyledCustomPage = styled(CustomPage)`
+  padding-top: 100px;
+`;
 
 export const Section = styled.View`
   justify-content: center;
@@ -35,7 +37,18 @@ export const ChampionName = styled.Text`
   margin-right: ${stylesConfig.spacing.large};
 `;
 
-export const StyledList = styled.FlatList`
-  height: 100%;
+type StyledListProps = {
+  hasFullHeight: boolean;
+};
+
+export const StyledList = styled.FlatList<StyledListProps>`
   width: 90%;
+  flex-grow: 1;
+  max-height: 70%;
+  ${(props: StyledListProps) =>
+    props.hasFullHeight &&
+    css`
+      flex-grow: 1;
+      max-height: 100%;
+    `}
 `;
