@@ -8,5 +8,5 @@ export enum RouteName {
   Main = 'Main',
   AvailableBets = 'AvailableBets',
   ActiveBets = 'ActiveBets',
-  FinishedBets = 'FinishedBets',
+  Profile = 'Profile',
 }

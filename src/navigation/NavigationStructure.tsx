@@ -13,6 +13,7 @@ export type RootStackParamList = {
   [RouteName.Main]: undefined;
   [RouteName.ActiveBets]: undefined;
   [RouteName.AvailableBets]: undefined;
+  [RouteName.Profile]: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -24,7 +25,10 @@ export const NavigationStructure = (): JSX.Element => {
       <Stack.Screen
         name={RouteName.Login}
         component={Login}
-        options={{ title: translate('pages.title.login') }}
+        options={{
+          title: translate('pages.title.login'),
+          headerLeft: () => null,
+        }}
       />
       <Stack.Screen
         name={RouteName.Signup}

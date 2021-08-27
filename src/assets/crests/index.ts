@@ -11,6 +11,7 @@ import * as BSCYoungBoys from './BSCYoungBoys.svg';
 import * as BrondbyIF from './BrondbyIF.svg';
 import * as SportLisboaeBenfica from './SportLisboaeBenfica.svg';
 import * as FCMidtjylland from './FCMidtjylland.svg';
+import * as CelticFC from './CelticFC.svg';
 
 export const crests: { [key: string]: any } = {
   PFKLudogorets1945Razgrad,
@@ -26,4 +27,5 @@ export const crests: { [key: string]: any } = {
   BrondbyIF,
   FCMidtjylland,
   SportLisboaeBenfica,
+  CelticFC,
 };

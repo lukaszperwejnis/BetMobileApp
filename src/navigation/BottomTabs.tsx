@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { StyleSheet } from 'react-native';
-import { ActiveBets, AvailableBets } from '@pages';
+import { ActiveBets, AvailableBets, Profile } from '@pages';
 import { useTranslation } from '@hooks';
 import { RouteName } from './RouteName';
 
@@ -48,7 +48,16 @@ export const BottomTabs = (): JSX.Element => {
         }}
         component={ActiveBets}
       />
-      {/* <Tab.Screen           name={RouteName.FinishedBets}     options={{ title: translate('pages.title.finishedBets') }} component={SettingsScreen} /> */}
+      <Tab.Screen
+        name={RouteName.Profile}
+        options={{
+          title: translate('pages.title.profile'),
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="logout" color={color} size={26} />
+          ),
+        }}
+        component={Profile}
+      />
     </Tab.Navigator>
   );
 };

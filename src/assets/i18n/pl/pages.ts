@@ -5,7 +5,7 @@ export const pages = {
   'pages.title.setPassword': 'Ustaw nowe hasło',
   'pages.title.availableBets': 'Dostępne zdarzenia',
   'pages.title.activeBets': 'Aktywne zdarzenia',
-  'pages.title.finishedBets': 'Zakończone zdarzenia',
+  'pages.title.profile': 'Profil',
   'pages.invalidToken.header': 'Nieprawidłowy token',
   'pages.invalidToken.description':
     'Oops, coś złego stało się z Twoim tokenem, spróbuj jeszcze raz wykonać akcje, którą podejmowałeś',
@@ -48,4 +48,5 @@ export const pages = {
   'pages.activeBets.emptyState':
     'Niestety obecnie nie posiadasz żadnych aktywnych zdarzeń',
   'pages.activeBets.cta.goToActivePage': 'Przejdź do dostępnych zakładów',
+  'pages.profile.logout': 'Wyloguj',
 };

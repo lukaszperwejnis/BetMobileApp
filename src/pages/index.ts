@@ -4,3 +4,4 @@ export { StartResetPassword } from './StartResetPassword';
 export { Signup } from './Signup';
 export { AvailableBets } from './AvailableBets/AvailableBets';
 export { ActiveBets } from './ActiveBets/ActiveBets';
+export { Profile } from './Profile';
