@@ -1,7 +1,7 @@
 # OSX
 #
 .DS_Store
-
+dist/
 # Xcode
 #
 build/
@@ -21,13 +21,19 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-# Android/IntelliJ
+#codesigndic exports
+ios/codesigndoc_exports/
+
+# Android/IntelliJ/ Vscode
 #
 build/
 .idea
 .gradle
 local.properties
+espeogoogleplay.json
 *.iml
+.vscode/
+.project
 
 # node.js
 #
@@ -51,9 +57,17 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+*/fastlane/metadata
 
 # Bundle artifact
 *.jsbundle
 
 # CocoaPods
 /ios/Pods/
+
+#Ruby
+/ios/vendor
+/android/vendor
+
+#Bitrise
+bitrise.yml
